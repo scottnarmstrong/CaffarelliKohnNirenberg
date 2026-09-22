@@ -1,0 +1,32 @@
+-- Copyright (c) 2026 Scott Armstrong and Vlad Vicol.
+-- Released under Apache 2.0 license.
+
+import CKN.Main.TheoremBProvider
+
+open MeasureTheory Set Filter
+open scoped ENNReal NNReal Topology
+open CKN.Foundation.Parabolic
+
+set_option autoImplicit false
+
+noncomputable section
+
+namespace CKN.Main
+
+/-- The gradient regularity criterion for suitable weak solutions. -/
+theorem epsilonRegularityGradient (q : ℝ) (hq : 5 / 2 < q) :
+    ∃ ε₁ : ℝ, 0 < ε₁ ∧
+      ∀ (Ω : Set Vec3) (I : Set ℝ) (u : ParabolicPoint → Vec3)
+        (Du : ParabolicPoint → Fin 3 → Vec3)
+        (p : ParabolicPoint → ℝ) (f : ParabolicPoint → Vec3),
+        (hsol : IsSuitableWeakSolutionIntegrable Ω I q u Du p f) →
+        ∀ z₀ ∈ spaceTimeSet Ω I,
+          Filter.limsup (fun r : ℝ =>
+              (ENNReal.ofReal r)⁻¹ *
+                ∫⁻ w in parabolicCylinder z₀.1 z₀.2 r,
+                  ENNReal.ofReal (spatialGradientSq u Du w))
+            (𝓝[>] (0 : ℝ)) < ENNReal.ofReal (ε₁ ^ (2 : ℕ)) →
+          IsRegularPoint Ω I u z₀ := by
+  exact CKN.Core.Endgame.epsilonRegularityGradient_unconditional q hq
+
+end CKN.Main

@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+message: >-
+  If you use this formalization, please cite it as below. Scott Armstrong was
+  supported by the European Research Council (ERC) under the European Union's
+  Horizon Europe research and innovation programme, grant agreement No. 101200828.
+  Vlad Vicol was partially supported by the Collaborative NSF grant DMS-2307681
+  and by a Simons Investigator Award.
+title: "CaffarelliKohnNirenberg: a Lean 4 formalization of the Caffarelli-Kohn-Nirenberg partial regularity theorem for the Navier-Stokes equations"
+version: "1.0"
+date-released: 2026-09-22
+abstract: >-
+  A machine-checked Lean 4 / Mathlib formalization of the Caffarelli-Kohn-Nirenberg
+  partial regularity theory for suitable weak solutions of the three-dimensional
+  Navier-Stokes equations: the L^3 epsilon-regularity theorem (Theorem A), the
+  gradient epsilon-regularity criterion (Theorem B) and the theorem that the
+  singular set has zero one-dimensional parabolic Hausdorff measure (Theorem C),
+  each proved using only the standard axioms, with
+  Mathlib-only comparator challenges checked separately and an explicit
+  non-zero suitable weak solution witnessing that the solution class is inhabited.
+type: software
+authors:
+  - family-names: Armstrong
+    given-names: Scott
+    affiliation: "CNRS and Laboratoire Jacques-Louis Lions, Sorbonne Université; Courant Institute School of Mathematics, Computing, and Data Science, New York University"
+  - family-names: Vicol
+    given-names: Vlad
+    affiliation: "Courant Institute School of Mathematics, Computing, and Data Science, New York University, New York, NY 10012"
+keywords:
+  - Lean
+  - mathlib
+  - formal verification
+  - Navier-Stokes equations
+  - partial regularity
+  - Caffarelli-Kohn-Nirenberg
+license: Apache-2.0
+repository-code: "https://github.com/scottnarmstrong/CaffarelliKohnNirenberg"
+references:
+  - type: unpublished
+    title: "The Caffarelli-Kohn-Nirenberg partial regularity theorem: a self-contained proof written for formalization"
+    authors:
+      - family-names: Armstrong
+        given-names: Scott
+      - family-names: Vicol
+        given-names: Vlad

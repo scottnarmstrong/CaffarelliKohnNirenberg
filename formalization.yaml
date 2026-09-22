@@ -1,0 +1,255 @@
+# Metadata schema version.
+version: "v0.4"
+
+project:
+  name: "CaffarelliKohnNirenberg"
+  description: >-
+    A Lean 4 / Mathlib formalization of the Caffarelli-Kohn-Nirenberg partial
+    regularity theory for suitable weak solutions of the three-dimensional
+    incompressible Navier-Stokes equations with forcing in L^q, q > 5/2: the L^3
+    epsilon-regularity theorem (Theorem A), the gradient epsilon-regularity
+    criterion (Theorem B) and the vanishing of the one-dimensional parabolic
+    Hausdorff measure of the singular set (Theorem C). The three theorems are
+    proved using only the standard axioms, restated together in a Mathlib-only comparator challenge and proved from
+    the library theorems. The manuscript being formalized is in the
+    repository and was corrected alongside the development.
+  authors:
+    - "Scott Armstrong"
+    - "Vlad Vicol"
+  responsible_maintainers:
+    - "Scott Armstrong"
+    - "Vlad Vicol"
+  affiliations:
+    - "Scott Armstrong: CNRS and Laboratoire Jacques-Louis Lions, Sorbonne Université; Courant Institute School of Mathematics, Computing, and Data Science, New York University"
+    - "Vlad Vicol: Department of Mathematics, Courant Institute School of Mathematics, Computing, and Data Science, New York University"
+  license: "Apache-2.0"
+  funding:
+    - "Scott Armstrong was supported by the European Research Council (ERC) under the European Union's Horizon Europe research and innovation programme, grant agreement No. 101200828."
+    - "Vlad Vicol was partially supported by the Collaborative NSF grant DMS-2307681 and by a Simons Investigator Award."
+
+classification:
+  arxiv: ["math.AP"]
+  msc2020: ["35Q30", "35B65", "76D05", "76D03", "35D30"]
+
+sources:
+  - title: "The Caffarelli--Kohn--Nirenberg partial regularity theorem: a self-contained proof written for formalization"
+    authors:
+      - "Scott Armstrong"
+      - "Vlad Vicol"
+    id: "paper/ckn.tex"
+    url: "paper/ckn.pdf"
+    type: "paper"
+    relationship: "formalizes"
+    note: >-
+      The included manuscript is the mathematical source for the three main
+      theorems. The Lean development follows its direct-iteration proof route,
+      with representation choices, auxiliary specializations, and unused
+      exposition described in docs/DEVIATIONS.md and docs/DESIGN_NOTES.md.
+      Those documents distinguish proved supporting results from manuscript
+      statements outside the formalized route.
+    license: "Apache-2.0"
+    author_contacted: "n/a"     # the formalizers are the authors of the source
+    prior_work: "Caffarelli, Kohn and Nirenberg (1982); Lin (1998); Kukavica (2008); O'Leary (2003); Lemarié-Rieusset (2016)"
+  - title: "Partial regularity of suitable weak solutions of the Navier-Stokes equations"
+    authors:
+      - "Luis Caffarelli"
+      - "Robert Kohn"
+      - "Louis Nirenberg"
+    id: "doi:10.1002/cpa.3160350604"
+    type: "paper"
+    relationship: "independently-proves"
+    note: >-
+      The theorem formalized (Theorem C) is the main result of this paper. The
+      proof route here follows Kukavica's organisation of the direct scale
+      iteration with a Morrey-space bootstrap and potential estimates in the
+      manner of O'Leary and Lemarié-Rieusset; Lin supplies the pressure estimates.
+    license: ""
+    author_contacted: "no"
+    prior_work: ""
+  - title: "A new proof of the Caffarelli-Kohn-Nirenberg theorem"
+    authors:
+      - "Fanghua Lin"
+    id: "doi:10.1002/(SICI)1097-0312(199803)51:3<241::AID-CPA2>3.0.CO;2-A"
+    type: "paper"
+    relationship: "background"
+    note: "Source of the pressure estimates used in the manuscript; its compactness argument is not the route formalized."
+    license: ""
+    author_contacted: "no"
+    prior_work: ""
+  - title: "On partial regularity for the Navier-Stokes equations"
+    authors:
+      - "Igor Kukavica"
+    id: "doi:10.3934/dcds.2008.21.717"
+    type: "paper"
+    relationship: "background"
+    note: "The direct iteration organised around a single monotone quantity, which the manuscript adopts."
+    license: ""
+    author_contacted: "no"
+    prior_work: ""
+
+related_formalizations: []
+
+status:
+  scope: >-
+    Complete for the three main theorems as stated in the manuscript (Theorems
+    2.7, 2.9 and 2.10 there): suitable weak solutions on an open product domain
+    in space-time, force in L^q_loc with q > 5/2 and not necessarily divergence
+    free, regular points defined by an almost-everywhere equal parabolically
+    Hölder representative, and the singular set measured by the one-dimensional
+    parabolic Hausdorff measure in the diameter gauge. The supporting library
+    (about 250,000 lines) contains Sobolev spaces and weak
+    derivatives, mollification, Newtonian and heat potentials, Morrey and
+    Campanato norms, the pressure theory and the parabolic Vitali covering. An
+    explicit nonzero suitable weak solution (a viscous shear flow) shows the
+    solution class is inhabited. The formalization does not cover every
+    supporting statement in the manuscript. In particular, its H²₀/Z-space
+    construction, time-derivative and weak-time-continuity route, and the
+    associated Pettis and du Bois-Reymond inputs are unused and not formalized
+    here. These omissions, the unused compactness route, and the distinction
+    between general qualitative and specialized quantitative estimates are
+    described in docs/DEVIATIONS.md and docs/DESIGN_NOTES.md.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+    - "propext"
+    - "Classical.choice"
+    - "Quot.sound"
+  main_results:
+    - declaration: "CKN.epsilonRegularityL3"
+      file: "CKN/Statements/TheoremA.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "CKN.epsilonRegularityGradient"
+      file: "CKN/Statements/TheoremB.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "CKN.caffarelliKohnNirenberg"
+      file: "CKN/Statements/TheoremC.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "CKNChallenge.epsilonRegularityL3"
+      file: "comparators/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "CKNChallenge.epsilonRegularityGradient"
+      file: "comparators/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+    - declaration: "CKNChallenge.caffarelliKohnNirenberg"
+      file: "comparators/Solution.lean"
+      sorry_count: 0
+      axioms: ["propext", "Classical.choice", "Quot.sound"]
+      comparator_config: "comparator.json"
+      literature_dependencies: []
+
+automation:
+  methods:
+    - method: "agent"
+      models:
+        - "claude-fable-5-1"
+        - "gpt-5.6-luna"
+        - "gpt-6-astra"
+        - "deepseek-4.1-flash"
+        - "leanstral-1-5"
+        - "claude-opus-5"
+      framework: >-
+        Claude Fable 5.1 coordinated agents using GPT 5.6-Luna, GPT Astra,
+        Deepseek 4.1 flash, Leanstral and Opus 5, under the authors' supervision.
+      tool_setup: >-
+        Lean 4 and Mathlib v4.34.0. The main theorem statements were reviewed
+        before proof development. Verification uses source checks, builds of
+        all library modules, Mathlib-only comparator statements and solutions,
+        independent NanoDa replay, and axiom checks. The commands are documented in
+        docs/VERIFICATION.md and run by the repository's CI workflows.
+      cost:
+        wall_time: "roughly 48 hours of development plus one day of release preparation"
+        spend_usd: "not separately tracked (ChatGPT Pro and Claude Max subscriptions)"
+        hardware: "one 16-CPU / 124 GB RAM Linux machine"
+      prompting_notes: >-
+        The authors determined the mathematical statements and reviewed changes
+        to the manuscript. Separate reviews compared the formal statements with
+        the manuscript and checked the use of intermediate results in the proofs.
+
+  spend_usd: "not separately tracked (ChatGPT Pro and Claude Max subscriptions)"
+  notes: >-
+    All Lean code was written by the listed models under the supervision of the
+    authors, who decided the mathematics, the statements and the corrections to
+    the manuscript. Every proof is checked by the Lean kernel and Mathlib; the
+    library contains no sorry and no custom axiom. The Mathlib-only comparators/Challenge.lean contains exactly three intentional
+    theorem-body placeholders. The separate Solution.lean proves the same
+    named declarations from the library; comparator.json selects all three.
+
+fidelity:
+  divergences: >-
+    Recorded in docs/DEVIATIONS.md and docs/DESIGN_NOTES.md. The main ones:
+    solutions live on open product domains in space-time (no loss by locality);
+    the local energy inequality is used in its almost-every-time form and the
+    manuscript's every-time route is excluded; the singular set is measured with
+    the parabolic diameter gauge, whose null sets coincide with those of the
+    manuscript's radius gauge; the bootstrap step of the manuscript was rewritten
+    to follow the formalized route (a localized pressure-gradient Morrey bound
+    rather than a pointwise potential representation); the Hölder representative
+    is constructed as a limit of dyadic ball averages rather than by
+    mollification; the common exceptional time set for the pressure slice
+    identity is obtained by translated mollifier tests rather than a countable
+    dense family of test functions; Theorem A asserts regularity on the open
+    interior of the half-cylinder, not on its top time face; the force is
+    assumed in L^q_loc with q > 5/2, which is stronger than the weakest known
+    hypotheses. The solution predicate uses supremum-norm energy finiteness,
+    equivalent to Euclidean finiteness in the fixed finite-dimensional spaces.
+    The three main conclusions agree with the manuscript; supporting statement
+    differences and unused exposition are described in the linked documents.
+
+review:
+  status: "author-verified"
+  reviewers:
+    - "Scott Armstrong"
+    - "Vlad Vicol"
+  notes: >-
+    Lean checks each proof against its formal statement. The
+    authors reviewed that the statements are the intended theorems; the
+    statements were compared with the manuscript by independent read-only
+    review agents, the three comparator declarations are checked mechanically, and the
+    manuscript was proofread in full before release. This is not external peer
+    review.
+
+alignment:
+  namespace: "CKN"
+  statements:
+    - source: "Theorem 2.7 (thm:A), small-data regularity"
+      lean: "CKN.epsilonRegularityL3"
+      module: "CKN.Statements.TheoremA"
+      status: "proved"
+      note: "Comparator pair comparators/{Challenge,Solution}.lean."
+    - source: "Theorem 2.9 (thm:B), gradient regularity"
+      lean: "CKN.epsilonRegularityGradient"
+      module: "CKN.Statements.TheoremB"
+      status: "proved"
+      note: "Comparator pair comparators/{Challenge,Solution}.lean."
+    - source: "Theorem 2.10 (thm:C), partial regularity"
+      lean: "CKN.caffarelliKohnNirenberg"
+      module: "CKN.Statements.TheoremC"
+      status: "proved"
+      note: "Deduced from Theorem B by the parabolic Vitali covering argument; comparator pair comparators/{Challenge,Solution}.lean."
+    - source: "Existence of a nonzero suitable weak solution (viscous shear flow)"
+      lean: "CKN.isSuitableWeakSolutionIntegrable_shearFlow"
+      module: "CKN.Setting.Examples.ShearFlowSuitable"
+      status: "proved"
+      note: "Witness that the solution class is inhabited; see docs/WITNESSES.md."
+
+acknowledgements: >-
+  Scott Armstrong was supported by the European Research Council (ERC) under the
+  European Union's Horizon Europe research and innovation programme (grant
+  agreement No. 101200828). Vlad Vicol was partially supported by the
+  Collaborative NSF grant DMS-2307681 and by a Simons Investigator Award. Built
+  on Lean 4, Mathlib and Lake.

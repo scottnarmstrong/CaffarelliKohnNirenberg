@@ -1,0 +1,52 @@
+% Copyright (c) 2026 Scott Armstrong and Vlad Vicol.
+% Released under Apache 2.0 license; see ../LICENSE.
+%% macros.tex --- notation for ckn.tex.
+%% Every macro here is used at least twice in ckn.tex.
+
+%% --- Theorem environments -------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{externalinput}[theorem]{External input}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{convention}[theorem]{Convention}
+
+%% --- Spaces and operators -------------------------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\dv}{\operatorname{div}}
+\newcommand{\curl}{\operatorname{curl}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\diam}{\operatorname{diam}}
+
+%% --- Cylinders, balls, averages -------------------------------------------
+\newcommand{\Ball}[2]{B_{#1}(#2)}
+\newcommand{\Cyl}[2]{Q_{#1}(#2)}
+\newcommand{\spavg}[2]{\bigl[#1\bigr]_{#2}}          % spatial average, a function of t
+\newcommand{\stavg}[2]{\bigl(#1\bigr)_{#2}}          % space-time average, a number
+
+%% --- Norms ----------------------------------------------------------------
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\Lp}[2]{L^{#1}(#2)}
+\newcommand{\LtLx}[3]{L^{#1}\bigl(#3;L^{#2}\bigr)}
+
+%% --- Fractions in exponents ----------------------------------------------
+\newcommand{\nf}[2]{\tfrac{#1}{#2}}
+
+%% --- Parabolic Hausdorff measure -----------------------------------------
+\newcommand{\Phaus}{\mathcal{P}}
+\newcommand{\dpar}{d_{\mathrm{par}}}
+
+%% --- Suitable weak solution class ----------------------------------------
+\newcommand{\SWS}{\mathrm{SWS}}
+
+%% --- Editorial ------------------------------------------------------------

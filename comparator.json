@@ -1,0 +1,16 @@
+{
+  "challenge_module": "comparators.Challenge",
+  "solution_module": "comparators.Solution",
+  "theorem_names": [
+    "CKNChallenge.epsilonRegularityL3",
+    "CKNChallenge.epsilonRegularityGradient",
+    "CKNChallenge.caffarelliKohnNirenberg"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "enable_nanoda": true
+}
