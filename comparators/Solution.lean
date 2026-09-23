@@ -5,7 +5,25 @@
 import CKN.Statements.TheoremA
 import CKN.Statements.TheoremB
 import CKN.Statements.TheoremC
-import Mathlib
+import Mathlib.Algebra.BigOperators.Group.Finset.Basic
+import Mathlib.Analysis.Calculus.ContDiff.Operations
+import Mathlib.Analysis.Calculus.FDeriv.Add
+import Mathlib.Analysis.Calculus.Gradient.Basic
+import Mathlib.Analysis.InnerProductSpace.Adjoint
+import Mathlib.Analysis.InnerProductSpace.Laplacian
+import Mathlib.Analysis.InnerProductSpace.LinearMap
+import Mathlib.Analysis.Normed.Lp.MeasurableSpace
+import Mathlib.Analysis.Normed.Lp.PiLp
+import Mathlib.LinearAlgebra.Trace
+import Mathlib.MeasureTheory.Function.LpSeminorm.Basic
+import Mathlib.MeasureTheory.Integral.Bochner.Basic
+import Mathlib.MeasureTheory.Integral.Bochner.Set
+import Mathlib.MeasureTheory.Measure.Hausdorff
+import Mathlib.MeasureTheory.Measure.Lebesgue.Basic
+import Mathlib.MeasureTheory.Measure.Prod
+import Mathlib.MeasureTheory.SpecificCodomains.WithLp
+import Mathlib.Topology.MetricSpace.HolderNorm
+import Mathlib.Topology.MetricSpace.Snowflaking
 
 /-!
 # The Caffarelli–Kohn–Nirenberg theorems
