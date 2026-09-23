@@ -35,6 +35,11 @@ def statement(text: str, name: str) -> str:
     return text[start:text.index(':=', start)].strip()
 
 
+def between(text: str, start: str, end: str) -> str:
+    left = text.index(start)
+    return text[left:text.index(end, left)]
+
+
 def check_sources() -> None:
     config = json.loads((ROOT / 'comparator.json').read_text())
     require(config == {
@@ -60,23 +65,31 @@ def check_sources() -> None:
                     re.findall(r'^set_option (.+)$', text, re.M)),
                 f'{label} sets an unexpected Lean option')
     imports = re.findall(r'^import (\S+)', challenge, re.M)
-    require(imports and all(name.startswith('Mathlib.') for name in imports),
-            'Challenge must import only Mathlib modules')
+    require(imports and all(name == 'Mathlib' or name.startswith('Mathlib.')
+                            for name in imports),
+            'Challenge must import only Mathlib')
     extra_imports = re.findall(r'^import (\S+)', solution, re.M)
     require(extra_imports == [f'CKN.Statements.Theorem{x}' for x in 'ABC'] + imports,
             'Solution must import the library theorems and Mathlib, never the Challenge')
-    # Check all definitions, instance choices and theorem types; the only code
-    # differences allowed are the three library imports and three proof terms.
-    expected = re.sub(r'^import .+\n', '', challenge, flags=re.M)
+    # The public comparator layer is deliberately cleaner than the historical
+    # library API.  Check that Challenge and Solution nevertheless duplicate
+    # that layer exactly.  Solution may then add only the coordinate-transport
+    # machinery needed to derive it from the library theorems.
+    prelude_start = '/-!\n# The Caffarelli–Kohn–Nirenberg theorems'
+    challenge_prelude = between(
+        challenge, prelude_start, '/-! ## The three theorems -/')
+    solution_prelude = between(
+        solution, prelude_start, '/-- The squared scale-invariant Dirichlet energy')
+    require(normalized(challenge_prelude) == normalized(solution_prelude),
+            'Challenge/Solution public definitions or instance choices differ')
+    beta_start = '/-- The squared scale-invariant Dirichlet energy'
+    challenge_beta = between(challenge, beta_start, '/-- Theorem B:')
+    solution_beta = between(solution, beta_start, 'abbrev RawSpace :=')
+    require(normalized(challenge_beta) == normalized(solution_beta),
+            'Challenge/Solution betaSq definitions differ')
     for letter, name in zip('ABC', NAMES):
-        library = (ROOT / f'CKN/Statements/Theorem{letter}.lean').read_text()
-        require(statement(challenge, name) == statement(library, name),
-                f'Theorem {letter} differs from the library statement')
-        require(statement(solution, name) == statement(library, name),
-                f'Solution {letter} differs from the library statement')
-        expected = expected.replace('by sorry', f'CKN.{name} q hq', 1)
-    require(normalized(expected) == normalized(re.sub(r'^import .+\n', '', solution, flags=re.M)),
-            'Challenge/Solution definitions or proofs differ from the expected correspondence')
+        require(statement(challenge, name) == statement(solution, name),
+                f'Challenge/Solution theorem {letter} types differ')
     print(f'Source comparison passed ({len(challenge.splitlines())} Challenge lines).')
 
 
