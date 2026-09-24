@@ -160,11 +160,11 @@ checked in this direction.
 
 ## Building and checking it yourself
 
-The project pins Lean 4 and Mathlib at v4.34.0. With `elan` and Python 3
+The project pins Lean 4 and Mathlib at v4.35.0-rc2. With `elan` and Python 3
 installed:
 
 ```sh
-elan toolchain install leanprover/lean4:v4.34.0
+elan toolchain install leanprover/lean4:v4.35.0-rc2
 lake exe cache get
 python3 scripts/build.py CKN
 ```

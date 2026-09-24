@@ -6,7 +6,7 @@ defaultTargets = ["CKN"]
 name = "mathlib"
 scope = "leanprover-community"
 git = "https://github.com/leanprover-community/mathlib4.git"
-rev = "v4.34.0"
+rev = "v4.35.0-rc2"
 
 # Main library, including the three theorem statements and their proofs.
 [[lean_lib]]

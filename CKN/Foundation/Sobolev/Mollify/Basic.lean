@@ -11,9 +11,9 @@ import Mathlib.Analysis.Calculus.ContDiff.Convolution
 
 Adapted from PDEFoundation (EllipticRegularity, 2026) with the author's
 permission. The custom convex-approximation chain was not used here: Mathlib
-v4.34 already provides normalized `ContDiffBump` kernels, convolution
-regularity, and approximate-identity convergence. This direct port keeps the
-kernel and convolution API independent of the sibling geometry layer.
+already provides normalized `ContDiffBump` kernels, convolution regularity,
+and approximate-identity convergence. This direct port keeps the kernel and
+convolution API independent of the sibling geometry layer.
 -/
 
 open scoped Convolution Topology

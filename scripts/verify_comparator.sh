@@ -11,8 +11,8 @@ comparator_dir="$cache_root/comparator"
 lean4export_dir="$cache_root/lean4export"
 nanoda_dir="$cache_root/nanoda"
 
-comparator_commit=575674928e239f5bc452aab72d1dd7b0f1326494
-lean4export_commit=076e8e57707e813375e8f9da8bf989799ace9680
+comparator_commit=32bd61da1d68fbaa310234964e9b820b03a0f82f
+lean4export_commit=6cea97789dc088ea47fcea15692db85685aedac5
 landrun_commit=811cfff51ceaf3d9843708aa6d22e9b84ccac8b4
 nanoda_commit=68d5ca9db226849b41a6fff59d796ff19d0a8840
 

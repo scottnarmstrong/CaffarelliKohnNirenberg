@@ -9,7 +9,7 @@
 # warm own-file profiles (add --profile). Never use it to compile a dependency.
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-LEAN="$HOME/.elan/toolchains/leanprover--lean4---v4.34.0/bin/lean"
+LEAN="$HOME/.elan/toolchains/leanprover--lean4---v4.35.0-rc2/bin/lean"
 if [ ! -x "$LEAN" ]; then echo "pinned toolchain lean not found: $LEAN" >&2; exit 2; fi
 LEAN_PATH="${CKN_EXTRA_LEAN_PATH:+$CKN_EXTRA_LEAN_PATH:}$ROOT/.lake/build/lib/lean"
 for pkg in "$ROOT"/.lake/packages/*/; do

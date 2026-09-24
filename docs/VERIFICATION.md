@@ -8,7 +8,7 @@ are pinned by `lean-toolchain`, `lakefile.toml` and `lake-manifest.json`.
 With `elan` and Python 3 installed:
 
 ```sh
-elan toolchain install leanprover/lean4:v4.34.0
+elan toolchain install leanprover/lean4:v4.35.0-rc2
 lake exe cache get
 python3 scripts/build.py CKN
 python3 scripts/build_all.py

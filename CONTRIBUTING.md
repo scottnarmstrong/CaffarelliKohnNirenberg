@@ -9,7 +9,7 @@ theorem in Lean 4 and Mathlib. The main theorem statements are in
 Install the pinned toolchain and obtain the Mathlib cache:
 
 ```sh
-elan toolchain install leanprover/lean4:v4.34.0
+elan toolchain install leanprover/lean4:v4.35.0-rc2
 lake exe cache get
 ```
 

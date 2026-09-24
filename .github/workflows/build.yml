@@ -51,7 +51,7 @@ jobs:
         run: |
           set -Eeuo pipefail
           pinned_toolchain="$(tr -d '[:space:]' < lean-toolchain)"
-          test "$pinned_toolchain" = leanprover/lean4:v4.34.0
+          test "$pinned_toolchain" = leanprover/lean4:v4.35.0-rc2
           if ! command -v elan >/dev/null 2>&1; then
             curl --proto '=https' --tlsv1.2 -sSf \
               https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh \

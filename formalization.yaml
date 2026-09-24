@@ -166,7 +166,7 @@ automation:
         Claude Fable 5.1 coordinated agents using GPT 5.6-Luna, GPT Astra,
         Deepseek 4.1 flash, Leanstral and Opus 5, under the authors' supervision.
       tool_setup: >-
-        Lean 4 and Mathlib v4.34.0. The main theorem statements were reviewed
+        Lean 4 and Mathlib v4.35.0-rc2. The main theorem statements were reviewed
         before proof development. Verification uses source checks, builds of
         all library modules, Mathlib-only comparator statements and solutions,
         independent NanoDa replay, and axiom checks. The commands are documented in

@@ -22,9 +22,9 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 MATHLIB = ROOT / ".lake/packages/mathlib"
-MATHLIB_OLEAN_CACHE_COUNT = 8546
+MATHLIB_OLEAN_CACHE_COUNT = 8555
 MATHLIB_OLEAN_THRESHOLD = (MATHLIB_OLEAN_CACHE_COUNT * 90 + 99) // 100
-EXPECTED_LEAN_VERSION = "Lean version 4.34.0"
+EXPECTED_LEAN_VERSION = "Lean version 4.35.0-rc2"
 PACKAGE = "CKN"
 ALLOWED_TARGETS = {PACKAGE, "CKNAll", "Comparators"}
 # ``--fresh`` is deliberately restricted to disposable checkouts.  Keep the

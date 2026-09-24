@@ -196,6 +196,7 @@ theorem shearCounterexampleVelocityPartial_nonneg (N : ℕ) (z : ParabolicPoint)
     0 ≤ shearCounterexampleVelocityPartial N z 2 := by
   unfold shearCounterexampleVelocityPartial shearFullScalarPartial
     shearReducedBumpPartial
+  rw [ite_eq_left rfl]
   exact Finset.sum_nonneg (fun n _ => shearReducedBumpTerm_nonneg n _)
 
 private theorem parabolicTime_nezero_ae :
